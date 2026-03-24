@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
+import ProductDrawer from '../components/ProductDrawer';
 import { MOCK_PRODUCTS } from '../data/products';
 import './Home.css';
 
@@ -12,6 +13,12 @@ const CATEGORIES = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [drawerProduct, setDrawerProduct] = useState(null);
+
+  const handleCategoryClick = (categoryName) => {
+    navigate(`/collections?category=${categoryName.toLowerCase().replace(/\s+/g, '-')}`);
+  };
   // Reveal animation on scroll
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -58,7 +65,12 @@ const Home = () => {
         
         <div className="category-grid grid grid-cols-4">
           {CATEGORIES.map((cat, index) => (
-            <div key={index} className="category-card reveal-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
+            <div
+              key={index}
+              className="category-card reveal-on-scroll"
+              style={{ animationDelay: `${index * 0.1}s`, cursor: 'pointer' }}
+              onClick={() => handleCategoryClick(cat.name)}
+            >
               <div className="category-img-container">
                 <img src={cat.image} alt={cat.name} className="category-img" loading="lazy" />
                 <div className="category-border"></div>
@@ -81,12 +93,12 @@ const Home = () => {
         <div className="product-grid grid grid-cols-4">
           {MOCK_PRODUCTS.map((product, index) => (
             <div key={product.id} className="reveal-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
-              <ProductCard product={product} />
+              <ProductCard product={product} onClick={setDrawerProduct} />
             </div>
           ))}
         </div>
         <div className="text-center mt-50 reveal-on-scroll">
-          <Link to="#collections" className="btn btn-outline" style={{marginTop: '40px'}}>View All Collections</Link>
+          <Link to="/collections" className="btn btn-outline" style={{marginTop: '40px'}}>View All Collections</Link>
         </div>
       </section>
 
@@ -134,6 +146,8 @@ const Home = () => {
           ))}
         </div>
       </section>
+
+      {drawerProduct && <ProductDrawer product={drawerProduct} onClose={() => setDrawerProduct(null)} />}
     </div>
   );
 };

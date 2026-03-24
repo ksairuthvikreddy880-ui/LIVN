@@ -60,8 +60,8 @@ const Navbar = () => {
 
           <div className="navbar-links">
             <Link to="/" className="nav-link">Home</Link>
-            <Link to="/#collections" className="nav-link">Collections</Link>
-            <Link to="/#new-arrivals" className="nav-link">New Arrivals</Link>
+            <Link to="/collections" className="nav-link">Collections</Link>
+            <Link to="/new-arrivals" className="nav-link">New Arrivals</Link>
             <Link to="/#custom-stitching" className="nav-link">Bespoke</Link>
           </div>
 

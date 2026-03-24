@@ -3,7 +3,7 @@
   flex-direction: column;
   background: #fff;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: var(--shadow-sm);
   transition: var(--transition-smooth);
   border: 1px solid rgba(212, 175, 55, 0.1);
@@ -97,4 +97,22 @@
   font-size: 1.15rem;
   color: var(--color-text-primary);
   font-weight: 600;
+}
+
+/* BorderGlow wrapper inside product card */
+.product-glow-wrapper {
+  width: 100%;
+  border-radius: 4px !important;
+  overflow: visible;
+}
+
+.product-glow-wrapper .border-glow-inner {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* Ensure product card clips its own background/border but not the glow */
+.product-card .product-image-container {
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
 }

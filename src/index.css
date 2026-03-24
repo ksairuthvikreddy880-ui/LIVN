@@ -156,20 +156,15 @@ ul {
   background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, var(--color-gold-light) 5px, var(--color-gold-light) 10px);
 }
 
-/* Premium Reveal Animations */
+/* Premium Reveal Animations - disabled to prevent jerk on load */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Layout Grid Utilities */
