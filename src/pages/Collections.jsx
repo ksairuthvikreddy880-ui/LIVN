@@ -35,8 +35,8 @@ const Collections = () => {
   return (
     <div className="collections-page">
       <div className="collections-header reveal-on-scroll">
-        <h1 className="collections-title">All Collections</h1>
-        <p className="collections-desc">Explore our full range of modern styles, curated for every occasion.</p>
+        <h1 className="collections-title">Kurti Collections</h1>
+        <p className="collections-desc">Explore our full range of kurti styles, crafted for every mood and occasion.</p>
       </div>
 
       {categories.map(category => {

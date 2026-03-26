@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import Checkout from './pages/Checkout';
 import Collections from './pages/Collections';
-import NewArrivals from './pages/NewArrivals';
 import Admin from './pages/Admin';
 
 import './index.css';
@@ -21,7 +20,6 @@ function App() {
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/checkout/:id" element={<Checkout />} />
             <Route path="/collections" element={<Collections />} />
-            <Route path="/new-arrivals" element={<NewArrivals />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>

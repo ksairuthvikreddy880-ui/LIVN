@@ -61,7 +61,6 @@ const Navbar = () => {
           <div className="navbar-links">
             <Link to="/" className="nav-link">Home</Link>
             <Link to="/collections" className="nav-link">Collections</Link>
-            <Link to="/new-arrivals" className="nav-link">New Arrivals</Link>
             <Link to="/#custom-stitching" className="nav-link">Bespoke</Link>
           </div>
 
@@ -97,7 +96,6 @@ const Navbar = () => {
         <div className="mobile-menu-content">
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
           <Link to="/#collections" onClick={() => setIsMobileMenuOpen(false)}>Collections</Link>
-          <Link to="/#new-arrivals" onClick={() => setIsMobileMenuOpen(false)}>New Arrivals</Link>
           <Link to="/#custom-stitching" onClick={() => setIsMobileMenuOpen(false)}>Bespoke</Link>
           {user
             ? <button onClick={handleLogout} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem' }}>Logout</button>

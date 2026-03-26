@@ -1,20 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
-import ProductDrawer from '../components/ProductDrawer';
-import { MOCK_PRODUCTS } from '../data/products';
 import './Home.css';
 
 const CATEGORIES = [
-  { name: 'Blazers', image: '/images/category_kurta.png' },
-  { name: 'Dresses', image: '/images/category_dress.png' },
-  { name: 'Co-ords', image: '/images/category_ethnic.png' },
-  { name: 'Outerwear', image: '/images/category_fusion.png' }
+  { name: 'Sleeveless Kurti', image: '/images/category_sleeveless_kurti.jpeg' },
+  { name: 'Full Sleeve Kurti', image: '/images/category_full_sleeve_kurti.jpeg' },
+  { name: 'Corset Kurti', image: '/images/category_corset_kurti.jpeg' },
+  { name: 'Noodle Strap Kurti', image: '/images/category_noodle_strap_kurti.jpeg' },
+  { name: 'Halter Neck Kurti', image: '/images/category_halter_neck_kurti.jpeg' },
 ];
 
 const Home = () => {
   const navigate = useNavigate();
-  const [drawerProduct, setDrawerProduct] = useState(null);
 
   const handleCategoryClick = (categoryName) => {
     navigate(`/collections?category=${categoryName.toLowerCase().replace(/\s+/g, '-')}`);
@@ -60,10 +57,10 @@ const Home = () => {
       <section id="collections" className="categories-section section-padding container">
         <div className="section-header reveal-on-scroll">
           <h2 className="section-title">Shop by Style</h2>
-          <p className="section-desc">Curated categories for every mood, occasion, and aesthetic.</p>
+          <p className="section-desc">Explore modern kurti styles designed for every mood and occasion.</p>
         </div>
         
-        <div className="category-grid grid grid-cols-4">
+        <div className="category-grid grid grid-cols-5">
           {CATEGORIES.map((cat, index) => (
             <div
               key={index}
@@ -83,25 +80,6 @@ const Home = () => {
 
       <div className="temple-divider-sm container"><div className="carving-line"></div></div>
 
-      {/* Featured Products */}
-      <section id="new-arrivals" className="featured-section section-padding container">
-        <div className="section-header reveal-on-scroll">
-          <h2 className="section-title">New Arrivals</h2>
-          <p className="section-desc">Fresh drops. Clean cuts. Designed with precision and modern sophistication.</p>
-        </div>
-        
-        <div className="product-grid grid grid-cols-4">
-          {MOCK_PRODUCTS.map((product, index) => (
-            <div key={product.id} className="reveal-on-scroll" style={{ animationDelay: `${index * 0.1}s` }}>
-              <ProductCard product={product} onClick={setDrawerProduct} />
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-50 reveal-on-scroll">
-          <Link to="/collections" className="btn btn-outline" style={{marginTop: '40px'}}>View All Collections</Link>
-        </div>
-      </section>
-
       {/* Bespoke/Custom Stitching */}
       <section id="custom-stitching" className="bespoke-section">
         <div className="bespoke-bg"></div>
@@ -119,7 +97,7 @@ const Home = () => {
             <Link to="/#collections" className="btn btn-primary" style={{marginTop: '20px'}}>Book a Fitting</Link>
           </div>
           <div className="bespoke-image-container reveal-on-scroll" style={{ animationDelay: '0.2s' }}>
-            <img src="/images/category_dress.png" alt="Custom Stitching" className="bespoke-img" style={{objectPosition: 'top'}} />
+            <img src="/images/bespoke_model.png" alt="Custom Stitching" className="bespoke-img" style={{objectPosition: 'top'}} />
             <div className="gold-frame"></div>
           </div>
         </div>
@@ -147,7 +125,6 @@ const Home = () => {
         </div>
       </section>
 
-      {drawerProduct && <ProductDrawer product={drawerProduct} onClose={() => setDrawerProduct(null)} />}
     </div>
   );
 };
